@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.4](https://github.com/bobthered/advent-of-code/compare/v0.0.3...v0.0.4) (2023-12-02)
+
+
+### Features
+
+* **1-part one:** add "1-Trebuchet?!" Part One ([7a4c1ed](https://github.com/bobthered/advent-of-code/commit/7a4c1ed7de799a59a1bf55e02b1673b7e3b06c5a))
+
 ### [0.0.3](https://github.com/bobthered/advent-of-code/compare/v0.0.2...v0.0.3) (2023-12-02)
 
 
