@@ -58,7 +58,7 @@ describe('Part One', () => {
     { path: `./${path}/input.js`, content: `export const example1 = \`\`;\rexport const example2 = \`\`;\rexport const input = \`\`;` },
     { path: `./${path}/README.md`, content: `# ${day} - ${title}` },
     {
-      path: `./${path}/solution.js`, content: `export const solution = (input = '') => {
+      path: `./${path}/solution.js`, content: `export const partOne = (input = '') => {
   // parse input
   const lines = input.split('\\n');
   
