@@ -4,10 +4,10 @@ import { solution } from './solution';
 
 describe('Part One', () => {
   it('Example', () => {
-    expect(solution(example1)).toBe(1);
+    expect(solution(example1)).toBe(142);
   })
 
-  // it('User Puzzle Input', () => {
-  //   expect(solution(input)).toBe(1);
-  // })
+  it('User Puzzle Input', () => {
+    expect(solution(input)).toBe(55621);
+  })
 })

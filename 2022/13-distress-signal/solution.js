@@ -22,7 +22,6 @@ export const solution = (input = '') => {
         type: typeof right?.[leftIndex],
         value: right?.[leftIndex]
       }
-      console.log(leftItem, rightItem);
 
       // check if both are numbers
       if (leftItem.type === 'number' && rightItem.type === 'number') {
@@ -34,7 +33,6 @@ export const solution = (input = '') => {
       }
     }
 
-    console.log(pairIndex, correctOrder)
   })
 
   console.log(correctOrderIndexes)
