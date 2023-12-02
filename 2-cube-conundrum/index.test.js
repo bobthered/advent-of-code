@@ -12,12 +12,12 @@ describe('Part One', () => {
   })
 })
 
-// describe('Part Two', () => {
-//   it('Example', () => {
-//     expect(partTwo(example2)).toBe(1);
-//   })
-// 
-//   it('User Puzzle Input', () => {
-//     expect(partTwo(input)).toBe(1);
-//   })
-// })
+describe('Part Two', () => {
+  it('Example', () => {
+    expect(partTwo(example2)).toBe(2286);
+  })
+
+  it('User Puzzle Input', () => {
+    expect(partTwo(input)).toBe(65371);
+  })
+})
