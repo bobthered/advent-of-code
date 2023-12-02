@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.6](https://github.com/bobthered/advent-of-code/compare/v0.0.5...v0.0.6) (2023-12-02)
+
+
+### Bug Fixes
+
+* **create-problem:** refactor create problem file structure ([c0852c3](https://github.com/bobthered/advent-of-code/commit/c0852c3a12e60c73329458403885bb4d3cff5773))
+
 ### [0.0.5](https://github.com/bobthered/advent-of-code/compare/v0.0.4...v0.0.5) (2023-12-02)
 
 

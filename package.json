@@ -1,6 +1,6 @@
 {
   "name": "@bobthered/advent-of-code",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "scripts": {
     "create-problem": "node scripts/create-problem.js",
     "release": "standard-version",
