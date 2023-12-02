@@ -33,29 +33,34 @@ if (!fs.existsSync(`./${path}`)) {
       path: `./${path}/index.test.js`, content:
         `import { describe, it, expect } from 'vitest';
 import { example1, example2, input } from './input';
-import { solution } from './solution';
+import { partOne, partTwo } from './solution';
 
 describe('Part One', () => {
   it('Example', () => {
-    expect(solution(example1)).toBe(1);
+    expect(partOne(example1)).toBe(1);
   })
 
-  it('User Puzzle Input', () => {
-    expect(solution(input)).toBe(1);
-  })
-})`
+//  it('User Puzzle Input', () => {
+//    expect(partOne(input)).toBe(1);
+//  })
+})
+
+// describe('Part Two', () => {
+//   it('Example', () => {
+//     expect(partTwo(example2)).toBe(1);
+//   })
+// 
+//   it('User Puzzle Input', () => {
+//     expect(partTwo(input)).toBe(1);
+//   })
+// })`
     },
     { path: `./${path}/input.js`, content: `export const example1 = \`\`;\rexport const example2 = \`\`;\rexport const input = \`\`;` },
-    {
-      path: `./${path}/parseInput.js`, content: `export const parseInput = (input = '') => {
-  
-}`},
     { path: `./${path}/README.md`, content: `# ${day} - ${title}` },
     {
-      path: `./${path}/solution.js`, content: `import { parseInput } from "./parseInput";
-export const solution = (input = '') => {
+      path: `./${path}/solution.js`, content: `export const solution = (input = '') => {
   // parse input
-  input = parseInput(input);
+  const lines = input.split('\\n');
   
   return 1;
 }` },
@@ -69,7 +74,7 @@ export const solution = (input = '') => {
     fs.readFile("./README.md", "utf8", (err, data) => resolve(data))
   );
   readmeContents = readmeContents.split("\n");
-  const readmePreContents = readmeContents.splice(0, 4);
+  const readmePreContents = readmeContents.splice(0, 8);
   readmeContents[
     +day - 1
   ] = `| ${day} | [${title}](./${path}/README.md) | [Solution](./${path}/solution.js)|`;
