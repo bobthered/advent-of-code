@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.7](https://github.com/bobthered/advent-of-code/compare/v0.0.6...v0.0.7) (2023-12-02)
+
+
+### Features
+
+* **2-Cube Conundrum:** add Part Two ([aa58cc4](https://github.com/bobthered/advent-of-code/commit/aa58cc401405d00fa17897a02ac2abb8d864dc23))
+
 ### [0.0.6](https://github.com/bobthered/advent-of-code/compare/v0.0.5...v0.0.6) (2023-12-02)
 
 
