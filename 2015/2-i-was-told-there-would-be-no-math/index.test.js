@@ -15,12 +15,15 @@ describe('Part One', () => {
   })
 })
 
-// describe('Part Two', () => {
-//   it('Example', () => {
-//     expect(partTwo(example2)).toBe(1);
-//   })
-// 
-//   it('User Puzzle Input', () => {
-//     expect(partTwo(input)).toBe(1);
-//   })
-// })
+describe('Part Two', () => {
+  it('2x3x4  = 34', () => {
+    expect(partTwo('2x3x4')).toBe(34);
+  })
+  it('1x1x10 = 14', () => {
+    expect(partTwo('1x1x10')).toBe(14);
+  })
+
+  it('User Puzzle Input', () => {
+    expect(partTwo(input)).toBe(3737498);
+  })
+})
