@@ -1,4 +1,5 @@
 import fs from "fs";
+import { DateTime } from "luxon";
 import Readline from "readline";
 
 const readline = Readline.createInterface({
@@ -6,6 +7,11 @@ const readline = Readline.createInterface({
   output: process.stdout,
 });
 
+const currentYear = DateTime.now().toFormat('yyyy');
+
+const year = await new Promise((resolve) => {
+  readline.question(`What year is this for ? (default="${currentYear}") `, answer => { resolve(answer || currentYear) });
+});
 const day = await new Promise((resolve) =>
   readline.question("What day is this for ? ", resolve)
 );
@@ -25,12 +31,12 @@ readline.close();
 
 readline.on("close", () => process.exit(0));
 
-if (!fs.existsSync(`./${path}`)) {
-  fs.mkdirSync(`./${path}`, { recursive: true });
+if (!fs.existsSync(`./${year}/${path}`)) {
+  fs.mkdirSync(`./${year}/${path}`, { recursive: true });
 
   const files = [
     {
-      path: `./${path}/index.test.js`, content:
+      path: `./${year}/${path}/index.test.js`, content:
         `import { describe, it, expect } from 'vitest';
 import { example1, example2, input } from './input';
 import { partOne, partTwo } from './solution';
@@ -55,10 +61,10 @@ describe('Part One', () => {
 //   })
 // })`
     },
-    { path: `./${path}/input.js`, content: `export const example1 = \`\`;\rexport const example2 = \`\`;\rexport const input = \`\`;` },
-    { path: `./${path}/README.md`, content: `# ${day} - ${title}` },
+    { path: `./${year}/${path}/input.js`, content: `export const example1 = \`\`;\rexport const example2 = \`\`;\rexport const input = \`\`;` },
+    { path: `./${year}/${path}/README.md`, content: `# ${day} - ${title}` },
     {
-      path: `./${path}/solution.js`, content: `export const partOne = (input = '') => {
+      path: `./${year}/${path}/solution.js`, content: `export const partOne = (input = '') => {
   // parse input
   const lines = input.split('\\n');
   
@@ -67,11 +73,12 @@ describe('Part One', () => {
   ]
 
   files.map((file) => {
+    console.log(file.path)
     writeFile(file.path, file.content)
   })
 
   let readmeContents = await new Promise((resolve) =>
-    fs.readFile("./README.md", "utf8", (err, data) => resolve(data))
+    fs.readFile(`./${year}/README.md`, "utf8", (err, data) => resolve(data))
   );
   readmeContents = readmeContents.split("\n");
   const readmePreContents = readmeContents.splice(0, 8);
@@ -81,6 +88,6 @@ describe('Part One', () => {
   readmeContents = [...readmePreContents, ...readmeContents].join("\n");
 
   await new Promise((resolve) =>
-    fs.writeFile(`./README.md`, readmeContents, resolve)
+    fs.writeFile(`./${year}/README.md`, readmeContents, resolve)
   );
 }
