@@ -24,12 +24,21 @@ describe('Part One', () => {
   })
 })
 
-// describe('Part Two', () => {
-//   it('Example', () => {
-//     expect(partTwo(example2)).toBe(1);
-//   })
-// 
-//   it('User Puzzle Input', () => {
-//     expect(partTwo(input)).toBe(1);
-//   })
-// })
+describe('Part Two', () => {
+  it('qjhvhtzxzqqjkmpb', () => {
+    expect(partTwo('qjhvhtzxzqqjkmpb')).toBe(1);
+  })
+  it('xxyxx', () => {
+    expect(partTwo('xxyxx')).toBe(1);
+  })
+  it('uurcxstgmygtbstg', () => {
+    expect(partTwo('uurcxstgmygtbstg')).toBe(0);
+  })
+  it('ieodomkazucvgmuy', () => {
+    expect(partTwo('ieodomkazucvgmuy')).toBe(0);
+  })
+
+  it('User Puzzle Input', () => {
+    expect(partTwo(input)).toBe(51);
+  })
+})
