@@ -7,7 +7,7 @@
 | 3 | [Perfectly Spherical Houses in a Vacuum](./3-perfectly-spherical-houses-in-a-vacuum/README.md) | [Solution](./3-perfectly-spherical-houses-in-a-vacuum/solution.js)|
 | 4 | [The Ideal Stocking Stuffer](./4-the-ideal-stocking-stuffer/README.md) | [Solution](./4-the-ideal-stocking-stuffer/solution.js)|
 | 5 | [Doesnt He Have Intern-Elves For This](./5-doesnt-he-have-intern-elves-for-this/README.md) | [Solution](./5-doesnt-he-have-intern-elves-for-this/solution.js)|
-| 6   |         |          |
+| 6 | [Probably a Fire Hazard](./6-probably-a-fire-hazard/README.md) | [Solution](./6-probably-a-fire-hazard/solution.js)|
 | 7   |         |          |
 | 8   |         |          |
 | 9   |         |          |
