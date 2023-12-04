@@ -25,3 +25,36 @@ export const partOne = (input = '') => {
 
   return cardPointsSum;
 }
+
+export const partTwo = (input = '') => {
+  // parse input
+  const cardInputs = input.split('\n');
+
+  // get initial card data
+  const cards = cardInputs.map((card) => {
+    // destructure data
+    const [winningNumbers, myNumbers] = card.replace(/Card\s+\d:\s/g, '').split(' | ').map(string => string.split(/\s+/g));
+
+    // filter by matching numbers
+    const matchedNumbers = myNumbers.filter(myNumber => winningNumbers.includes(myNumber))
+
+    return {
+      count: 1,
+      totalMatchNumbers: matchedNumbers.length,
+    }
+  });
+
+  // copy winning cards
+  cards.map(({ count, totalMatchNumbers }, cardIndex) => {
+    [...Array(count)].map(_ => {
+      [...Array(totalMatchNumbers)].map((_, cardIndexDelta) => {
+        cards[cardIndex + cardIndexDelta + 1].count++
+      })
+    })
+  })
+
+  // get total of cards
+  const cardsTotal = cards.reduce((total, { count }) => total += count, 0)
+
+  return cardsTotal;
+}
