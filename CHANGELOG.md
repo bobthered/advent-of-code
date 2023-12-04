@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.10](https://github.com/bobthered/advent-of-code/compare/v0.0.9...v0.0.10) (2023-12-04)
+
+
+### Features
+
+* **4-Scratchcards:** add Part One ([cf037c9](https://github.com/bobthered/advent-of-code/commit/cf037c994eaf333f660fa16eb6e9cc780d1a8739))
+* **4-Scratchcards:** add Part Two ([b17b266](https://github.com/bobthered/advent-of-code/commit/b17b26657825dd4dfbe677f7e18162490555c848))
+
 ### [0.0.9](https://github.com/bobthered/advent-of-code/compare/v0.0.8...v0.0.9) (2023-12-04)
 
 
