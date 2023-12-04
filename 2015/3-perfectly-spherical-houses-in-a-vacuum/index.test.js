@@ -18,12 +18,18 @@ describe('Part One', () => {
   })
 })
 
-// describe('Part Two', () => {
-//   it('Example', () => {
-//     expect(partTwo(example2)).toBe(1);
-//   })
-// 
-//   it('User Puzzle Input', () => {
-//     expect(partTwo(input)).toBe(1);
-//   })
-// })
+describe('Part Two', () => {
+  it('^v', () => {
+    expect(partTwo('^v')).toBe(3);
+  })
+  it('^>v<', () => {
+    expect(partTwo('^>v<')).toBe(3);
+  })
+  it('^v^v^v^v^v', () => {
+    expect(partTwo('^v^v^v^v^v')).toBe(11);
+  })
+
+  it('User Puzzle Input', () => {
+    expect(partTwo(input)).toBe(2341);
+  })
+})
