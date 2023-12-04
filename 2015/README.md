@@ -2,7 +2,7 @@
 
 | Day | Problem | Solution |
 | --- | ------- | -------- |
-| 1   |         |          |
+| 1 | [Not Quite Lisp](./1-not-quite-lisp/README.md) | [Solution](./1-not-quite-lisp/solution.js)|
 | 2   |         |          |
 | 3   |         |          |
 | 4   |         |          |
