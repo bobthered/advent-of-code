@@ -18,12 +18,15 @@ describe('Part One', () => {
   })
 })
 
-// describe('Part Two', () => {
-//   it('Example', () => {
-//     expect(partTwo(example2)).toBe(1);
-//   })
-// 
-//   it('User Puzzle Input', () => {
-//     expect(partTwo(input)).toBe(1);
-//   })
-// })
+describe('Part Two', () => {
+  it('turn on 0,0 through 0,0', () => {
+    expect(partTwo('turn on 0,0 through 0,0')).toBe(1);
+  })
+  it('toggle 0,0 through 999,999', () => {
+    expect(partTwo('toggle 0,0 through 999,999')).toBe(2000000);
+  })
+
+  it('User Puzzle Input', () => {
+    expect(partTwo(input)).toBe(14110788);
+  })
+})
