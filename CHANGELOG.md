@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.8](https://github.com/bobthered/advent-of-code/compare/v0.0.7...v0.0.8) (2023-12-04)
+
+
+### Features
+
+* **3-Gear Ratios:** add Part One ([80ebeb9](https://github.com/bobthered/advent-of-code/commit/80ebeb933185fb0df8453662200e82bc53f14c0e))
+
 ### [0.0.7](https://github.com/bobthered/advent-of-code/compare/v0.0.6...v0.0.7) (2023-12-02)
 
 
