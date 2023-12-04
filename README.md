@@ -9,7 +9,7 @@
 | 1   | [Trebuchet!?](./1-trebuchet/README.md)         | [Solution](./1-trebuchet/solution.js)      |
 | 2   | [Cube Conundrum](./2-cube-conundrum/README.md) | [Solution](./2-cube-conundrum/solution.js) |
 | 3 | [Gear Ratios](./3-gear-ratios/README.md) | [Solution](./3-gear-ratios/solution.js)|
-| 4   |                                                |                                            |
+| 4 | [Scratchcards](./4-scratchcards/README.md) | [Solution](./4-scratchcards/solution.js)|
 | 5   |                                                |                                            |
 | 6   |                                                |                                            |
 | 7   |                                                |                                            |
