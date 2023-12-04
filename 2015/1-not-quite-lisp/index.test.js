@@ -8,16 +8,16 @@ describe('Part One', () => {
   })
 
   it('User Puzzle Input', () => {
-    expect(partOne(input)).toBe(1);
+    expect(partOne(input)).toBe(74);
   })
 })
 
-// describe('Part Two', () => {
-//   it('Example', () => {
-//     expect(partTwo(example2)).toBe(1);
-//   })
-// 
-//   it('User Puzzle Input', () => {
-//     expect(partTwo(input)).toBe(1);
-//   })
-// })
+describe('Part Two', () => {
+  it('Example', () => {
+    expect(partTwo(example2)).toBe(5);
+  })
+
+  it('User Puzzle Input', () => {
+    expect(partTwo(input)).toBe(1795);
+  })
+})
