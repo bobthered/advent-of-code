@@ -81,7 +81,7 @@ describe('Part One', () => {
     fs.readFile(`./${year}/README.md`, "utf8", (err, data) => resolve(data))
   );
   readmeContents = readmeContents.split("\n");
-  const readmePreContents = readmeContents.splice(0, 8);
+  const readmePreContents = readmeContents.splice(0, 4);
   readmeContents[
     +day - 1
   ] = `| ${day} | [${title}](./${path}/README.md) | [Solution](./${path}/solution.js)|`;
