@@ -7,7 +7,7 @@
 | 3   | [Gear Ratios](./3-gear-ratios/README.md)       | [Solution](./3-gear-ratios/solution.js)    |
 | 4   | [Scratchcards](./4-scratchcards/README.md)     | [Solution](./4-scratchcards/solution.js)   |
 | 5 | [If You Give A Seed A Fertilizer](./5-if-you-give-a-seed-a-fertilizer/README.md) | [Solution](./5-if-you-give-a-seed-a-fertilizer/solution.js)|
-| 6   |                                                |                                            |
+| 6 | [Wait For It](./6-wait-for-it/README.md) | [Solution](./6-wait-for-it/solution.js)|
 | 7   |                                                |                                            |
 | 8   |                                                |                                            |
 | 9   |                                                |                                            |
