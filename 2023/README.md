@@ -10,7 +10,7 @@
 | 6 | [Wait For It](./6-wait-for-it/README.md) | [Solution](./6-wait-for-it/solution.js)|
 | 7 | [Camel Cards](./7-camel-cards/README.md) | [Solution](./7-camel-cards/solution.js)|
 | 8 | [Haunted Wasteland](./8-haunted-wasteland/README.md) | [Solution](./8-haunted-wasteland/solution.js)|
-| 9   |                                                |                                            |
+| 9 | [Mirage Maintenance](./9-mirage-maintenance/README.md) | [Solution](./9-mirage-maintenance/solution.js)|
 | 10  |                                                |                                            |
 | 11  |                                                |                                            |
 | 12  |                                                |                                            |
