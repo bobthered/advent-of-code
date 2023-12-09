@@ -18,13 +18,18 @@ const createHistory = (line) => {
     // get sequence references
     const currentSequence = sequences[sequenceIndex - 1];
     const previousSequence = sequences[sequenceIndex];
-    currentSequence.updateNextNumber(previousSequence.getLastNumber());
+
+    // create new numbers
+    currentSequence.createNextNumber(previousSequence.getLastNumber());
+    currentSequence.createPreviousNumber(previousSequence.getFirstNumber());
   }
 
   // methods
+  const getFirstNumber = () => sequences[0].getFirstNumber();
   const getLastNumber = () => sequences[0].getLastNumber();
 
   return {
+    getFirstNumber,
     getLastNumber,
   };
 };
@@ -38,36 +43,49 @@ const createSequence = (numbers) => {
     numbersIndex < numbers.length - 1;
     numbersIndex++
   ) {
-    differences.push(numbers[numbersIndex + 1] - numbers[numbersIndex]);
+    // get previous and next numbers
+    const next = numbers[numbersIndex + 1];
+    const previous = numbers[numbersIndex];
+
+    // calculate difference
+    const difference = next - previous;
+
+    // add difference
+    differences.push(difference);
   }
 
   // methods
+  const createNextNumber = (number) =>
+    (numbers = [...numbers, numbers[numbers.length - 1] + number]);
+  const createPreviousNumber = (number) =>
+    (numbers = [numbers[0] - number, ...numbers]);
   const getDifferences = () => differences;
+  const getFirstNumber = () => numbers[0];
   const getLastNumber = () => numbers[numbers.length - 1];
   const getNumbers = () => numbers;
   const getNumbersAreAllZeroes = () =>
     [...numbers].filter((number) => number !== 0).length === 0;
-  const updateNextNumber = (number) =>
-    (numbers = [...numbers, numbers[numbers.length - 1] + number]);
 
   return {
+    createNextNumber,
+    createPreviousNumber,
     getDifferences,
+    getFirstNumber,
     getNumbersAreAllZeroes,
     getLastNumber,
     getNumbers,
-    updateNextNumber,
   };
 };
 export const partOne = (input = "") => {
   return sumOfExtrapolatedValues(input);
 };
-const sumOfExtrapolatedValues = (input) => {
+export const partTwo = (input = "") => {
+  return sumOfExtrapolatedValues(input, "getFirstNumber");
+};
+const sumOfExtrapolatedValues = (input, method = "getLastNumber") => {
   // get histories
   const histories = input.split("\n").map((line) => createHistory(line));
 
   // return total of last number in histories
-  return histories.reduce(
-    (total, history) => total + history.getLastNumber(),
-    0
-  );
+  return histories.reduce((total, history) => total + history[method](), 0);
 };
