@@ -3,7 +3,7 @@
 | Day | Problem                                                | Solution                                       |
 | --- | ------------------------------------------------------ | ---------------------------------------------- |
 | 1   | [Historian Hysteria](./1-historian-hysteria/README.md) | [Solution](./1-historian-hysteria/solution.js) |
-| 2   |                                                        |                                                |
+| 2   | [Red-Nosed Reports](./2-red-nosed-reports/README.md)   | [Solution](./2-red-nosed-reports/solution.js)  |
 | 3   |                                                        |                                                |
 | 4   |                                                        |                                                |
 | 5   |                                                        |                                                |
