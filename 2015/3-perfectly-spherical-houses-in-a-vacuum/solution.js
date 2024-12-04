@@ -21,4 +21,23 @@ export const partOne = (input = "") => {
   return [...houseMap].length;
 };
 
-export const partTwo = (input = "") => {};
+export const partTwo = (input = "") => {
+  const directions = input.split("");
+  let houseMap = new Map([["0|0", 2]]);
+  const santaPositions = [
+    { x: 0, y: 0 },
+    { x: 0, y: 0 },
+  ];
+  let santaIndex = 0;
+
+  for (let direction of directions) {
+    santaPositions[santaIndex].x += directionMap.get(direction).x;
+    santaPositions[santaIndex].y += directionMap.get(direction).y;
+    const key = `${santaPositions[santaIndex].x}|${santaPositions[santaIndex].y}`;
+    if (!houseMap.has(key)) houseMap.set(key, 0);
+    houseMap.set(key, houseMap.get(key) + 1);
+    santaIndex++;
+    if (santaIndex > santaPositions.length - 1) santaIndex = 0;
+  }
+  return [...houseMap].length;
+};
