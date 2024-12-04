@@ -14,4 +14,18 @@ export const partOne = (input = "") => {
   return total;
 };
 
-export const partTwo = (input = "") => {};
+export const partTwo = (input = "") => {
+  const boxes = input.split("\r\n");
+  const total = boxes.reduce((total, box) => {
+    const dimensions = box
+      .split("x")
+      .map((string) => +string)
+      .sort((a, b) => a - b);
+    const shortestDistance = dimensions[0] * 2 + dimensions[1] * 2;
+    const cubicVolume = dimensions[0] * dimensions[1] * dimensions[2];
+    const feet = shortestDistance + cubicVolume;
+    total += feet;
+    return total;
+  }, 0);
+  return total;
+};

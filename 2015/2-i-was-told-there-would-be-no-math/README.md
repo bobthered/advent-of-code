@@ -1,24 +1,18 @@
-<article class="day-desc"><h2>--- Day 1: Not Quite Lisp ---</h2><p>Santa was hoping for a white Christmas, but his weather machine's "snow" function is powered by stars, and he's fresh out!  To save Christmas, he needs you to collect <em class="star">fifty stars</em> by December 25th.</p>
-<p>Collect stars by helping Santa solve puzzles.  Two puzzles will be made available on each day in the Advent calendar; the second puzzle is unlocked when you complete the first.  Each puzzle grants <em class="star">one star</em>. <span title="Also, some puzzles contain Easter eggs like this one. Yes, I know it's not traditional to do Advent calendars for Easter.">Good luck!</span></p>
-<p>Here's an easy puzzle to warm you up.</p>
-<p>Santa is trying to deliver presents in a large apartment building, but he can't find the right floor - the directions he got are a little confusing. He starts on the ground floor (floor <code>0</code>) and then follows the instructions one character at a time.</p>
-<p>An opening parenthesis, <code>(</code>, means he should go up one floor, and a closing parenthesis, <code>)</code>, means he should go down one floor.</p>
-<p>The apartment building is very tall, and the basement is very deep; he will never find the top or bottom floors.</p>
+<article class="day-desc"><h2>--- Day 2: I Was Told There Would Be No Math ---</h2><p>The elves are running low on wrapping paper, and so they need to submit an order for more.  They have a list of the dimensions (length <code>l</code>, width <code>w</code>, and height <code>h</code>) of each present, and only want to order exactly as much as they need.</p>
+<p>Fortunately, every present is a box (a perfect <a href="https://en.wikipedia.org/wiki/Cuboid#Rectangular_cuboid">right rectangular prism</a>), which makes calculating the required wrapping paper for each gift a little easier: find the surface area of the box, which is <code>2*l*w + 2*w*h + 2*h*l</code>.  The elves also need a little extra paper for each present: the area of the smallest side.</p>
 <p>For example:</p>
 <ul>
-<li><code>(())</code> and <code>()()</code> both result in floor <code>0</code>.</li>
-<li><code>(((</code> and <code>(()(()(</code> both result in floor <code>3</code>.</li>
-<li><code>))(((((</code> also results in floor <code>3</code>.</li>
-<li><code>())</code> and <code>))(</code> both result in floor <code>-1</code> (the first basement level).</li>
-<li><code>)))</code> and <code>)())())</code> both result in floor <code>-3</code>.</li>
+<li>A present with dimensions <code>2x3x4</code> requires <code>2*6 + 2*12 + 2*8 = 52</code> square feet of wrapping paper plus <code>6</code> square feet of slack, for a total of <code>58</code> square feet.</li>
+<li>A present with dimensions <code>1x1x10</code> requires <code>2*1 + 2*10 + 2*10 = 42</code> square feet of wrapping paper plus <code>1</code> square foot of slack, for a total of <code>43</code> square feet.</li>
 </ul>
-<p>To <em>what floor</em> do the instructions take Santa?</p>
+<p>All numbers in the elves' list are in <span title="Yes, I realize most of these presents are luxury yachts.">feet</span>.  How many total <em>square feet of wrapping paper</em> should they order?</p>
 </article>
-<article class="day-desc"><h2 id="part2">--- Part Two ---</h2><p>Now, given the same instructions, find the <em>position</em> of the first character that causes him to enter the basement (floor <code>-1</code>).  The first character in the instructions has position <code>1</code>, the second character has position <code>2</code>, and so on.</p>
+<article class="day-desc"><h2 id="part2">--- Part Two ---</h2><p>The elves are also running low on ribbon.  Ribbon is all the same width, so they only have to worry about the length they need to order, which they would again like to be exact.</p>
+<p>The ribbon required to wrap a present is the shortest distance around its sides, or the smallest perimeter of any one face.  Each present also requires a bow made out of ribbon as well; the feet of ribbon required for the perfect bow is equal to the cubic feet of volume of the present.  Don't ask how they tie the bow, though; they'll never tell.</p>
 <p>For example:</p>
 <ul>
-<li><code>)</code> causes him to enter the basement at character position <code>1</code>.</li>
-<li><code>()())</code> causes him to enter the basement at character position <code>5</code>.</li>
+<li>A present with dimensions <code>2x3x4</code> requires <code>2+2+3+3 = 10</code> feet of ribbon to wrap the present plus <code>2*3*4 = 24</code> feet of ribbon for the bow, for a total of <code>34</code> feet.</li>
+<li>A present with dimensions <code>1x1x10</code> requires <code>1+1+1+1 = 4</code> feet of ribbon to wrap the present plus <code>1*1*10 = 10</code> feet of ribbon for the bow, for a total of <code>14</code> feet.</li>
 </ul>
-<p>What is the <em>position</em> of the character that causes Santa to first enter the basement?</p>
+<p>How many total <em>feet of ribbon</em> should they order?</p>
 </article>
