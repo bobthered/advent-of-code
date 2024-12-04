@@ -1,6 +1,6 @@
 import { parseInput } from "./parseInput";
 
-export const solution = (input = '') => {
+export const solution = (input = "") => {
   // parse input
   const { pairs } = parseInput(input);
 
@@ -16,15 +16,15 @@ export const solution = (input = '') => {
     for (let leftIndex = 0; leftIndex < left.length; leftIndex++) {
       const leftItem = {
         type: typeof left[leftIndex],
-        value: left[leftIndex]
-      }
+        value: left[leftIndex],
+      };
       const rightItem = {
         type: typeof right?.[leftIndex],
-        value: right?.[leftIndex]
-      }
+        value: right?.[leftIndex],
+      };
 
       // check if both are numbers
-      if (leftItem.type === 'number' && rightItem.type === 'number') {
+      if (leftItem.type === "number" && rightItem.type === "number") {
         // exit if left is not less than right
         if (leftItem.value > rightItem.value) {
           correctOrder = false;
@@ -32,10 +32,7 @@ export const solution = (input = '') => {
         }
       }
     }
-
-  })
-
-  console.log(correctOrderIndexes)
+  });
 
   return 1;
-}
+};
