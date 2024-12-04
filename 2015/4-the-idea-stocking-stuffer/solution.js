@@ -19,4 +19,6 @@ export const partOne = (input = "", numberOfLeadingZeros = 5) => {
   return answer;
 };
 
-export const partTwo = (input = "") => {};
+export const partTwo = (input = "") => {
+  return partOne(input, 6);
+};
