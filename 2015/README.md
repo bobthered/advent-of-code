@@ -5,7 +5,7 @@
 | 1   | [Not Quite Lisp](./1-not-quite-lisp/README.md)                                                 | [Solution](./1-not-quite-lisp/solution.js)                         |
 | 2   | [I Was Told There Would Be No Math](./2-i-was-told-there-would-be-no-math/README.md)           | [Solution](./2-i-was-told-there-would-be-no-math/solution.js)      |
 | 3   | [Perfectly Spherical Houses in a Vacuum](./3-perfectly-spherical-houses-in-a-vacuum/README.md) | [Solution](./3-perfectly-spherical-houses-in-a-vacuum/solution.js) |
-| 4   |                                                                                                |                                                                    |
+| 4   | [The Ideal Stocking Stuffer](./4-the-idea-stocking-stuffer/README.md)                          | [Solution](./4-the-idea-stocking-stuffer/solution.js)              |
 | 5   |                                                                                                |                                                                    |
 | 6   |                                                                                                |                                                                    |
 | 7   |                                                                                                |                                                                    |
