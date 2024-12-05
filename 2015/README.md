@@ -10,7 +10,7 @@
 | 6   | [Probably a Fire Hazard](./6-probably-a-fire-hazard/README.md)                                 | [Solution](./6-probably-a-fire-hazard/solution.js)                 |
 | 7   |                                                                                                |                                                                    |
 | 8   | [Matchsticks](./8-matchsticks/README.md)                                                       | [Solution](./8-matchsticks/solution.js)                            |
-| 9   |                                                                                                |                                                                    |
+| 9   | [All in a Single Night](./9-all-in-a-single-night/README.md)                                   | [Solution](./9-all-in-a-single-night/solution.js)                  |
 | 10  |                                                                                                |                                                                    |
 | 11  |                                                                                                |                                                                    |
 | 12  |                                                                                                |                                                                    |
