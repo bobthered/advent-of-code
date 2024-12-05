@@ -16,14 +16,40 @@ const getDistances = (input) =>
     return cities;
   }, new Map());
 
-export const partOne = (input = "") => {
-  const distances = getDistances(input);
-  const cities = [...distances].map(([city]) => city);
-
-  return shortestTotalDistance(cities, distances);
+const getLongestDistance = (
+  visitedCityKeys,
+  unvisitedCityKeys,
+  fromKey,
+  distances,
+  currentDistanceTraveled
+) => {
+  let longestDistance = 0;
+  const from = distances.get(fromKey);
+  for (let toIndex = 0; toIndex < unvisitedCityKeys.length; toIndex++) {
+    const toKey = unvisitedCityKeys[toIndex];
+    const distance = from.get(toKey);
+    const newUnvisitedCityKeys = [...unvisitedCityKeys].filter(
+      (cityKey) => cityKey !== toKey
+    );
+    if (newUnvisitedCityKeys.length === 0)
+      longestDistance = Math.max(
+        longestDistance,
+        currentDistanceTraveled + distance
+      );
+    if (newUnvisitedCityKeys.length > 0)
+      longestDistance = Math.max(
+        longestDistance,
+        getLongestDistance(
+          [...visitedCityKeys, toKey],
+          newUnvisitedCityKeys,
+          toKey,
+          distances,
+          currentDistanceTraveled + distance
+        )
+      );
+  }
+  return longestDistance;
 };
-
-export const partTwo = (input = "") => {};
 
 const getShortestDistance = (
   visitedCityKeys,
@@ -58,6 +84,46 @@ const getShortestDistance = (
       );
   }
   return shortestDistance;
+};
+
+const longestTotalDistance = (cityKeys, distances) => {
+  let longestDistance = 0;
+  for (let fromIndex = 0; fromIndex < cityKeys.length; fromIndex++) {
+    const fromKey = cityKeys[fromIndex];
+    const from = distances.get(fromKey);
+    const otherCityKeys = [...cityKeys].filter((toKey) => fromKey !== toKey);
+    for (let toIndex = 0; toIndex < otherCityKeys.length; toIndex++) {
+      const toKey = otherCityKeys[toIndex];
+      const distance = from.get(toKey);
+      const visitedCityKeys = [fromKey, toKey];
+      const unvisitedCityKeys = [...cityKeys].filter(
+        (cityKey) => !visitedCityKeys.includes(cityKey)
+      );
+      const longestTotalDistance = getLongestDistance(
+        visitedCityKeys,
+        unvisitedCityKeys,
+        toKey,
+        distances,
+        distance
+      );
+      longestDistance = Math.max(longestDistance, longestTotalDistance);
+    }
+  }
+  return longestDistance;
+};
+
+export const partOne = (input = "") => {
+  const distances = getDistances(input);
+  const cities = [...distances].map(([city]) => city);
+
+  return shortestTotalDistance(cities, distances);
+};
+
+export const partTwo = (input = "") => {
+  const distances = getDistances(input);
+  const cities = [...distances].map(([city]) => city);
+
+  return longestTotalDistance(cities, distances);
 };
 
 const shortestTotalDistance = (cityKeys, distances) => {
