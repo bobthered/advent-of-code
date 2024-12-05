@@ -6,4 +6,10 @@ export const partOne = (input = "") => {
   );
 };
 
-export const partTwo = (input = "") => {};
+export const partTwo = (input = "") => {
+  const strings = input.split("\r\n");
+  return strings.reduce(
+    (total, string) => total + JSON.stringify(string).length - string.length,
+    0
+  );
+};
