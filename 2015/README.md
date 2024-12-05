@@ -11,7 +11,7 @@
 | 7   |                                                                                                |                                                                    |
 | 8   | [Matchsticks](./8-matchsticks/README.md)                                                       | [Solution](./8-matchsticks/solution.js)                            |
 | 9   | [All in a Single Night](./9-all-in-a-single-night/README.md)                                   | [Solution](./9-all-in-a-single-night/solution.js)                  |
-| 10  |                                                                                                |                                                                    |
+| 10  | [Elves Look, Elves Say](./10-elves-look-elves-say/README.md)                                   | [Solution](./10-elves-look-elves-say/solution.js)                  |
 | 11  |                                                                                                |                                                                    |
 | 12  |                                                                                                |                                                                    |
 | 13  |                                                                                                |                                                                    |
