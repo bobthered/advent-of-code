@@ -9,7 +9,7 @@
 | 5   | [Doesn't He Have Intern-Elves For This](./5-doesnt-he-have-intern-elves-for-this/README.md)    | [Solution](./5-doesnt-he-have-intern-elves-for-this/solution.js)   |
 | 6   | [Probably a Fire Hazard](./6-probably-a-fire-hazard/README.md)                                 | [Solution](./6-probably-a-fire-hazard/solution.js)                 |
 | 7   |                                                                                                |                                                                    |
-| 8   |                                                                                                |                                                                    |
+| 8   | [Matchsticks](./8-matchsticks/README.md)                                                       | [Solution](./8-matchsticks/solution.js)                            |
 | 9   |                                                                                                |                                                                    |
 | 10  |                                                                                                |                                                                    |
 | 11  |                                                                                                |                                                                    |
