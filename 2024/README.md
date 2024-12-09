@@ -8,7 +8,7 @@
 | 4   | [Ceres Search](./4-ceres-search/README.md)             | [Solution](./4-ceres-search/solution.js)       |
 | 5   | [Print Queue](./5-print-queue/README.md)               | [Solution](./5-print-queue/solution.js)        |
 | 6   | [Guard Gallivant](./6-guard-gallivant/README.md)       | [Solution](./6-guard-gallivant/solution.js)    |
-| 7   |                                                        |                                                |
+| 7   | [Bridge Repair](./7-bridge-repair/README.md)           | [Solution](./7-bridge-repair/solution.js)      |
 | 8   |                                                        |                                                |
 | 9   |                                                        |                                                |
 | 10  |                                                        |                                                |
