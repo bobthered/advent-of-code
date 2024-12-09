@@ -1,14 +1,14 @@
-const parseRow = (row) => {
+const parseRow = (row, radix) => {
   const match = row.match(/(\d+):\s(.+)/);
   const sum = +match[1];
   const numbers = match[2].split(" ").map((string) => +string);
-  const operatorDecimal = Math.pow(2, numbers.length - 1);
-  const padStartMaxLength = operatorDecimal.toString(2).length - 1;
+  const operatorDecimal = Math.pow(radix, numbers.length - 1);
+  const padStartMaxLength = operatorDecimal.toString(radix).length - 1;
   return { sum, numbers, operatorDecimal, padStartMaxLength };
 };
 
-export const partOne = (input = "") => {
-  const equations = input.split("\r\n").map(parseRow);
+export const partOne = (input = "", radix = 2) => {
+  const equations = input.split("\r\n").map((row) => parseRow(row, radix));
   const trueEquations = equations.filter(
     ({ sum, numbers, operatorDecimal, padStartMaxLength }) => {
       let trueEquation = false;
@@ -18,13 +18,16 @@ export const partOne = (input = "") => {
         operatorIndex++
       ) {
         const binary = operatorIndex
-          .toString(2)
+          .toString(radix)
           .padStart(padStartMaxLength, "0")
           .split("");
+        // console.log({ operatorIndex, binary });
         const equationSum = [...numbers].reduce((total, number, index) => {
           if (index === 0) return number;
           if (binary[index - 1] === "0") total *= number;
           if (binary[index - 1] === "1") total += number;
+          if (binary[index - 1] === "2")
+            total = +(total.toString() + number.toString());
           return total;
         }, 0);
         if (equationSum === sum) {
@@ -44,4 +47,4 @@ export const partOne = (input = "") => {
   return totalCalibration;
 };
 
-export const partTwo = (input = "") => {};
+export const partTwo = (input = "") => partOne(input, 3);
