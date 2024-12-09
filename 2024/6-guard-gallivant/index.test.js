@@ -18,15 +18,15 @@ describe("Part One", () => {
     expect(partOne(example1)).toBe(41);
   });
   it("User Puzzle Input", () => {
-    expect(partOne(input)).toBe(1586300);
+    expect(partOne(input)).toBe(5145);
   });
 });
 
-// describe("Part Two", () => {
-//   it("Example", () => {
-//     expect(partTwo(example2)).toBe(14);
-//   });
-//   it("User Puzzle Input", () => {
-//     expect(partTwo(input)).toBe(3737498);
-//   });
-// });
+describe("Part Two", () => {
+  it("Example", () => {
+    expect(partTwo(example1)).toBe(6);
+  });
+  it("User Puzzle Input", () => {
+    expect(partTwo(input)).toBe(1523);
+  });
+});
