@@ -1,7 +1,7 @@
 import { expect } from "jsr:@std/expect";
 import { resolve } from "jsr:@std/path";
 import { describe, it } from "jsr:@std/testing/bdd";
-import { partOne } from "./solution.ts";
+import { partOne, partTwo } from "./solution.ts";
 
 const example1 = await Deno.readTextFile(
   resolve(import.meta.dirname || "", "./inputs/example1.txt")
@@ -22,11 +22,11 @@ describe("Part One", () => {
   });
 });
 
-// describe("Part Two", () => {
-//   it("Example", () => {
-//     expect(partTwo(example2)).toBe(14);
-//   });
-//   it("User Puzzle Input", () => {
-//     expect(partTwo(input)).toBe(3737498);
-//   });
-// });
+describe("Part Two", () => {
+  it("Example", () => {
+    expect(partTwo(example1)).toBe(81);
+  });
+  it("User Puzzle Input", () => {
+    expect(partTwo(input)).toBe(1511);
+  });
+});

@@ -5,7 +5,7 @@ const directions = [
   { xDelta: -1, yDelta: 0 },
 ];
 
-const getScores = (map: number[][], x: number, y: number) => {
+const getScores = (map: number[][], unique: boolean, x: number, y: number) => {
   let score = 0;
   const visitedSet: Set<string> = new Set();
 
@@ -16,7 +16,7 @@ const getScores = (map: number[][], x: number, y: number) => {
       const newHeight = map?.[newY]?.[newX] || -1;
       if (startingHeight + 1 !== newHeight) continue;
       if (newHeight === 9) {
-        if (!visitedSet.has(`${newX}|${newY}`)) {
+        if (!visitedSet.has(`${newX}|${newY}`) || !unique) {
           visitedSet.add(`${newX}|${newY}`);
           score++;
         }
@@ -46,7 +46,7 @@ const parseInput = (input: string) => {
   return { map, trailHeads };
 };
 
-export const partOne = (input = "") => {
+export const partOne = (input = "", unique = true) => {
   const { trailHeads, map } = parseInput(input);
   for (
     let trailHeadIndex = 0;
@@ -54,7 +54,7 @@ export const partOne = (input = "") => {
     trailHeadIndex++
   ) {
     const { x, y } = trailHeads[trailHeadIndex];
-    trailHeads[trailHeadIndex].score = getScores(map, x, y);
+    trailHeads[trailHeadIndex].score = getScores(map, unique, x, y);
   }
   const sum = trailHeads.reduce(
     (total, trailHead) => total + trailHead.score,
@@ -63,6 +63,6 @@ export const partOne = (input = "") => {
   return sum;
 };
 
-// export const partTwo = (input = "") => {
-//   return 0;
-// };
+export const partTwo = (input = "") => {
+  return partOne(input, false);
+};
