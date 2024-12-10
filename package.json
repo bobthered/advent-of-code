@@ -7,9 +7,11 @@
     "test": "vitest"
   },
   "type": "module",
+  "dependencies": {
+    "md5": "^2.3.0"
+  },
   "devDependencies": {
     "luxon": "^3.4.4",
-    "md5": "^2.3.0",
     "standard-version": "^9.5.0",
     "vitest": "^0.34.6"
   }

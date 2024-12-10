@@ -7,10 +7,15 @@ const readline = Readline.createInterface({
   output: process.stdout,
 });
 
-const currentYear = DateTime.now().toFormat('yyyy');
+const currentYear = DateTime.now().toFormat("yyyy");
 
 const year = await new Promise((resolve) => {
-  readline.question(`What year is this for ? (default="${currentYear}") `, answer => { resolve(answer || currentYear) });
+  readline.question(
+    `What year is this for ? (default="${currentYear}") `,
+    (answer) => {
+      resolve(answer || currentYear);
+    }
+  );
 });
 const day = await new Promise((resolve) =>
   readline.question("What day is this for ? ", resolve)
@@ -25,7 +30,7 @@ const writeFile = (path, content) => {
   const writeStream = fs.createWriteStream(path);
   writeStream.write(content);
   writeStream.end();
-}
+};
 
 readline.close();
 
@@ -36,9 +41,9 @@ if (!fs.existsSync(`./${year}/${path}`)) {
 
   const files = [
     {
-      path: `./${year}/${path}/index.test.js`, content:
-        `import { describe, it, expect } from 'vitest';
-import { example1, example2, input } from './input';
+      path: `./${year}/${path}/index.test.js`,
+      content: `import { describe, it, expect } from 'vitest';
+import { example1, example2, input } from './input.js';
 import { partOne, partTwo } from './solution';
 
 describe('Part One', () => {
@@ -59,23 +64,28 @@ describe('Part One', () => {
 //   it('User Puzzle Input', () => {
 //     expect(partTwo(input)).toBe(1);
 //   })
-// })`
+// })`,
     },
-    { path: `./${year}/${path}/input.js`, content: `export const example1 = \`\`;\rexport const example2 = \`\`;\rexport const input = \`\`;` },
+    {
+      path: `./${year}/${path}/input.js`,
+      content: `export const example1 = \`\`;\rexport const example2 = \`\`;\rexport const input = \`\`;`,
+    },
     { path: `./${year}/${path}/README.md`, content: `# ${day} - ${title}` },
     {
-      path: `./${year}/${path}/solution.js`, content: `export const partOne = (input = '') => {
+      path: `./${year}/${path}/solution.js`,
+      content: `export const partOne = (input = '') => {
   // parse input
   const lines = input.split('\\n');
   
   return 1;
-}` },
-  ]
+}`,
+    },
+  ];
 
   files.map((file) => {
-    console.log(file.path)
-    writeFile(file.path, file.content)
-  })
+    console.log(file.path);
+    writeFile(file.path, file.content);
+  });
 
   let readmeContents = await new Promise((resolve) =>
     fs.readFile(`./${year}/README.md`, "utf8", (err, data) => resolve(data))
