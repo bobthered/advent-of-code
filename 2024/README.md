@@ -10,7 +10,7 @@
 | 6   | [Guard Gallivant](./6-guard-gallivant/README.md)             | [Solution](./6-guard-gallivant/solution.js)       |
 | 7   | [Bridge Repair](./7-bridge-repair/README.md)                 | [Solution](./7-bridge-repair/solution.js)         |
 | 8   | [Resonant Collinearity](./8-resonant-collinearity/README.md) | [Solution](./8-resonant-collinearity/solution.js) |
-| 9   |                                                              |                                                   |
+| 9   | [Disk Fragmenter](./9-disk-fragmenter/README.md)             | [Solution](./9-disk-fragmenter/solution.js)       |
 | 10  |                                                              |                                                   |
 | 11  |                                                              |                                                   |
 | 12  |                                                              |                                                   |
