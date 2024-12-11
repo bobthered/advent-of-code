@@ -12,8 +12,7 @@
 | 8   | [Resonant Collinearity](./8-resonant-collinearity/README.md) | [Solution](./8-resonant-collinearity/solution.js) |
 | 9   | [Disk Fragmenter](./9-disk-fragmenter/README.md)             | [Solution](./9-disk-fragmenter/solution.js)       |
 | 10  | [Hoof It](./10-hoof-it/README.md)                            | [Solution](./10-hoof-it/solution.js)              |
-| 10  |                                                              |                                                   |
-| 11  |                                                              |                                                   |
+| 11  | [Plutonian Pebbles](./11-plutonian-pebbles/README.md)        | [Solution](./11-plutonian-pebbles/solution.js)    |
 | 12  |                                                              |                                                   |
 | 13  |                                                              |                                                   |
 | 14  |                                                              |                                                   |
