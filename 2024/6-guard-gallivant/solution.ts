@@ -1,3 +1,14 @@
+type Guard = {
+  directionKey: string;
+  x: number;
+  y: number;
+};
+
+type Map = {
+  directionKeys: string[];
+  value: string;
+}[][];
+
 const guardDirections = new Map([
   ["^", { x: 0, y: -1 }],
   [">", { x: 1, y: 0 }],
@@ -5,11 +16,14 @@ const guardDirections = new Map([
   ["<", { x: -1, y: 0 }],
 ]);
 
-const guardIsInMap = (guard, map) =>
+const guardIsInMap = (guard: Guard, map: Map) =>
   map?.[guard.y]?.[guard.x]?.value !== undefined;
 
-const haveVisitedNextPosition = (guard, map) => {
-  const guardTranslate = guardDirections.get(guard.directionKey);
+const haveVisitedNextPosition = (guard: Guard, map: Map) => {
+  const guardTranslate = guardDirections.get(guard.directionKey) || {
+    x: 0,
+    y: 0,
+  };
   const guardNewX = guard.x + guardTranslate.x;
   const guardNewY = guard.y + guardTranslate.y;
   return (map?.[guardNewY]?.[guardNewX]?.directionKeys || []).includes(
@@ -17,9 +31,9 @@ const haveVisitedNextPosition = (guard, map) => {
   );
 };
 
-const initializeMap = (input = "", guard) => {
-  const map = input.split("\r\n").map((row, y) => {
-    row = row.split("").map((string, x) => {
+const initializeMap = (input = "", guard: Guard) => {
+  const map = input.split("\r\n").map((string, y) => {
+    const row = string.split("").map((string, x) => {
       const cell = { directionKeys: [], value: string };
       if (guardDirections.has(string)) {
         guard.directionKey = string;
@@ -35,8 +49,11 @@ const initializeMap = (input = "", guard) => {
   return { guard, map };
 };
 
-const moveGuard = (guard, map) => {
-  const guardTranslate = guardDirections.get(guard.directionKey);
+const moveGuard = (guard: Guard, map: Map) => {
+  const guardTranslate = guardDirections.get(guard.directionKey) || {
+    x: 0,
+    y: 0,
+  };
   const guardNewX = guard.x + guardTranslate.x;
   const guardNewY = guard.y + guardTranslate.y;
   if (map?.[guardNewY]?.[guardNewX]?.value === "#") {
@@ -68,7 +85,7 @@ export const partOne = (input = "") => {
   }
 
   const numberOfDistinctPositions = map.reduce(
-    (total, row) =>
+    (total: number, row) =>
       total +
       row.reduce((total, cell) => total + (cell.value === "X" ? 1 : 0), 0),
     0
@@ -92,9 +109,8 @@ export const partTwo = (input = "") => {
       let guard = JSON.parse(JSON.stringify(initialGuard));
       let map = JSON.parse(JSON.stringify(initialMap));
       map[y][x].value = "#";
-      let tries = 0;
 
-      while (guardIsInMap(guard, map) && tries < 100) {
+      while (guardIsInMap(guard, map)) {
         ({ guard, map } = moveGuard(guard, map));
         if (haveVisitedNextPosition(guard, map)) {
           numberOfObstructionPositions++;

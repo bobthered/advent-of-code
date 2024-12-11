@@ -1,3 +1,4 @@
+import { expect } from "jsr:@std/expect";
 import { describe, it } from "jsr:@std/testing/bdd";
 import { example1, input } from "./input.ts";
 import { partOne, partTwo } from "./solution.ts";

@@ -1,7 +1,7 @@
 export const partOne = (input = "") => {
   const frequencyMap = new Map();
-  let map = input.split("\r\n").map((row, y) => {
-    row = row.split("").map((char, x) => {
+  const map = input.split("\r\n").map((string, y) => {
+    const row = string.split("").map((char, x) => {
       if (char !== ".") {
         if (!frequencyMap.has(char)) frequencyMap.set(char, []);
         const frequency = frequencyMap.get(char);
@@ -38,8 +38,8 @@ export const partOne = (input = "") => {
 
 export const partTwo = (input = "") => {
   const frequencyMap = new Map();
-  let map = input.split("\r\n").map((row, y) => {
-    row = row.split("").map((char, x) => {
+  const map = input.split("\r\n").map((string, y) => {
+    const row = string.split("").map((char, x) => {
       if (char !== ".") {
         if (!frequencyMap.has(char)) frequencyMap.set(char, []);
         const frequency = frequencyMap.get(char);

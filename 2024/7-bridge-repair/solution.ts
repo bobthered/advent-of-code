@@ -1,5 +1,5 @@
-const parseRow = (row, radix) => {
-  const match = row.match(/(\d+):\s(.+)/);
+const parseRow = (row: string, radix: number) => {
+  const match = row.match(/(\d+):\s(.+)/) || [];
   const sum = +match[1];
   const numbers = match[2].split(" ").map((string) => +string);
   const operatorDecimal = Math.pow(radix, numbers.length - 1);
@@ -21,7 +21,6 @@ export const partOne = (input = "", radix = 2) => {
           .toString(radix)
           .padStart(padStartMaxLength, "0")
           .split("");
-        // console.log({ operatorIndex, binary });
         const equationSum = [...numbers].reduce((total, number, index) => {
           if (index === 0) return number;
           if (binary[index - 1] === "0") total *= number;

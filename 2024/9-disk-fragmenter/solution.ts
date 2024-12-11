@@ -1,5 +1,7 @@
-const convertDiskMapToBlocks = (diskMap) =>
-  diskMap.split("").reduce((blocks, string, index) => {
+type Block = number | "";
+
+const convertDiskMapToBlocks = (diskMap: string) =>
+  diskMap.split("").reduce((blocks: Block[], string, index) => {
     const numberOfRepeats = +string;
     const value = index % 2 === 0 ? Math.floor(index / 2) : "";
     for (let i = 0; i < numberOfRepeats; i++) {
@@ -8,7 +10,7 @@ const convertDiskMapToBlocks = (diskMap) =>
     return blocks;
   }, []);
 
-const defragmentBlocks = (blocks) => {
+const defragmentBlocks = (blocks: Block[]): number[] => {
   let leftPointer = 0;
   let rightPointer = blocks.length - 1;
   while (leftPointer !== rightPointer) {
@@ -27,8 +29,8 @@ const defragmentBlocks = (blocks) => {
       rightPointer--;
     }
   }
-  blocks = blocks.filter((block) => block !== "");
-  return blocks;
+  const defragmentBlocks = blocks.filter((block) => block !== "");
+  return defragmentBlocks;
 };
 
 export const partOne = (diskMap = "") => {
@@ -69,7 +71,7 @@ export const partTwo = (diskMap = "") => {
                   if (blockIdxs.length <= dotBlockIdxs.length) {
                     for (let m = 0; m < blockIdxs.length; m++) {
                       if (blockIdxs[m] > dotBlockIdxs[m]) {
-                        const ch = arr[blockIdxs[m]];
+                        const ch: string = arr[blockIdxs[m]];
                         arr[blockIdxs[m]] = arr[dotBlockIdxs[m]];
                         arr[dotBlockIdxs[m]] = ch;
                       }

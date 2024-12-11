@@ -4,13 +4,13 @@ import { describe, it } from "jsr:@std/testing/bdd";
 import { partOne, partTwo } from "./solution.ts";
 
 const example1 = await Deno.readTextFile(
-  resolve(import.meta.dirname, "./inputs/example1.txt")
+  resolve(import.meta.dirname || "", "./inputs/example1.txt")
 );
-const example2 = await Deno.readTextFile(
-  resolve(import.meta.dirname, "./inputs/example2.txt")
-);
+// const example2 = await Deno.readTextFile(
+//   resolve(import.meta.dirname || '', "./inputs/example2.txt")
+// );
 const input = await Deno.readTextFile(
-  resolve(import.meta.dirname, "./inputs/input.txt")
+  resolve(import.meta.dirname || "", "./inputs/input.txt")
 );
 
 describe("Part One", () => {
