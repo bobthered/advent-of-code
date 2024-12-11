@@ -1,23 +1,41 @@
-export const partOne = (input = "", numberOfBlinks = 25) => {
-  let stones = input.split(" ").map((string) => +string);
+const getStoneCount = (stone: number, numberOfBlinks: number) => {
+  if (numberOfBlinks === 0) return 1;
 
-  for (let blinkCount = 0; blinkCount < numberOfBlinks; blinkCount++) {
-    stones = stones
-      .map((value) => {
-        if (value === 0) return 1;
-        if (value.toString().length % 2 === 0) {
-          const valueString = value.toString();
-          const left = +valueString.substring(0, valueString.length / 2);
-          const right = +valueString.substring(valueString.length / 2);
-          return [left, right];
-        }
-        return value * 2024;
-      })
-      .flat();
+  const cachedStoneCounts = stoneCacheMap.get(stone) || new Map();
+  const cachedStoneCount = cachedStoneCounts.get(numberOfBlinks);
+  if (cachedStoneCount) return cachedStoneCount;
+
+  let stoneCount: number = 0;
+
+  if (stone === 0) {
+    stoneCount = getStoneCount(1, numberOfBlinks - 1);
+  } else if (stone.toString().length % 2 === 0) {
+    const string = stone.toString();
+    stoneCount =
+      getStoneCount(+string.slice(0, string.length / 2), numberOfBlinks - 1) +
+      getStoneCount(+string.slice(string.length / 2), numberOfBlinks - 1);
+  } else {
+    stoneCount = getStoneCount(stone * 2024, numberOfBlinks - 1);
   }
-  return stones.length;
+
+  cachedStoneCounts.set(numberOfBlinks, stoneCount);
+  stoneCacheMap.set(stone, cachedStoneCounts);
+
+  return stoneCount;
 };
 
-// export const partTwo = (input = "") => {
-//   return 0;
-// };
+export const partOne = (input = "", numberOfBlinks = 25) => {
+  const stones = input.split(" ").map(Number);
+
+  const totalStones = stones
+    .map((stone) => getStoneCount(stone, numberOfBlinks))
+    .reduce((total, count) => total + count, 0);
+
+  return totalStones;
+};
+
+export const partTwo = (input = "", numberOfBlinks = 75) => {
+  return partOne(input, numberOfBlinks);
+};
+
+const stoneCacheMap: Map<number, Map<number, number>> = new Map();

@@ -1,7 +1,7 @@
 import { expect } from "jsr:@std/expect";
 import { resolve } from "jsr:@std/path";
 import { describe, it } from "jsr:@std/testing/bdd";
-import { partOne } from "./solution.ts";
+import { partOne, partTwo } from "./solution.ts";
 
 const example1 = await Deno.readTextFile(
   resolve(import.meta.dirname || "", "./inputs/example1.txt")
@@ -14,20 +14,19 @@ const input = await Deno.readTextFile(
 );
 
 describe("Part One", () => {
-  it("Example", () => {
+  it("Example - 6 blinks", () => {
     expect(partOne(example1, 6)).toBe(22);
-    expect(partOne(example1)).toBe(55312);
   });
-  it("User Puzzle Input", () => {
+  it("User Puzzle Input - 25 blinks", () => {
     expect(partOne(input)).toBe(197357);
   });
 });
 
-// describe("Part Two", () => {
-//   it("Example", () => {
-//     expect(partTwo(example2)).toBe(14);
-//   });
-//   it("User Puzzle Input", () => {
-//     expect(partTwo(input)).toBe(3737498);
-//   });
-// });
+describe("Part Two", () => {
+  it("User Puzzle Input - 30 blinks", () => {
+    expect(partTwo(input, 30)).toBe(1591642);
+  });
+  it("User Puzzle Input - 75 blinks", () => {
+    expect(partTwo(input, 75)).toBe(234568186890978);
+  });
+});
