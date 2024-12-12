@@ -13,7 +13,7 @@
 | 9   | [Disk Fragmenter](./9-disk-fragmenter/README.md)             | [Solution](./9-disk-fragmenter/solution.js)       |
 | 10  | [Hoof It](./10-hoof-it/README.md)                            | [Solution](./10-hoof-it/solution.js)              |
 | 11  | [Plutonian Pebbles](./11-plutonian-pebbles/README.md)        | [Solution](./11-plutonian-pebbles/solution.js)    |
-| 12  |                                                              |                                                   |
+| 12  | [Garden Groups](./12-garden-groups/README.md)                | [Solution](./12-garden-groups/solution.js)        |
 | 13  |                                                              |                                                   |
 | 14  |                                                              |                                                   |
 | 15  |                                                              |                                                   |
