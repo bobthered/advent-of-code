@@ -1,20 +1,94 @@
 type Garden = Map<string, string>;
-type Region = { area: number; perimeter: number };
+type Region = { area: number; perimeter: number; sides: number };
 
-export const partOne = (input = "") => {
-  const directions = [
-    { xDelta: 0, yDelta: -1 },
-    { xDelta: 1, yDelta: 0 },
-    { xDelta: 0, yDelta: 1 },
-    { xDelta: -1, yDelta: 0 },
-  ];
+const cornerDescriptions = [
+  ".O.\nOX.\n...",
+  ".0.\n.XO\n...",
+  "...\nOX.\n.0.",
+  "...\n.XO\n.0.",
+  "OX.\nXX.\n...",
+  ".XO\n.XX\n...",
+  "...\nXX.\nOX.",
+  "...\n.XX\n.XO",
+];
+const corners: {
+  comparison: "different" | "same";
+  xDelta: number;
+  yDelta: number;
+}[][] = [
+  [
+    { comparison: "different", xDelta: -1, yDelta: 0 },
+    { comparison: "different", xDelta: 0, yDelta: -1 },
+  ],
+  [
+    { comparison: "different", xDelta: 1, yDelta: 0 },
+    { comparison: "different", xDelta: 0, yDelta: -1 },
+  ],
+  [
+    { comparison: "different", xDelta: -1, yDelta: 0 },
+    { comparison: "different", xDelta: 0, yDelta: 1 },
+  ],
+  [
+    { comparison: "different", xDelta: 1, yDelta: 0 },
+    { comparison: "different", xDelta: 0, yDelta: 1 },
+  ],
+  [
+    { comparison: "different", xDelta: -1, yDelta: -1 },
+    { comparison: "same", xDelta: -1, yDelta: 0 },
+    { comparison: "same", xDelta: 0, yDelta: -1 },
+  ],
+  [
+    { comparison: "different", xDelta: 1, yDelta: -1 },
+    { comparison: "same", xDelta: 1, yDelta: 0 },
+    { comparison: "same", xDelta: 0, yDelta: -1 },
+  ],
+  [
+    { comparison: "different", xDelta: -1, yDelta: 1 },
+    { comparison: "same", xDelta: -1, yDelta: 0 },
+    { comparison: "same", xDelta: 0, yDelta: 1 },
+  ],
+  [
+    { comparison: "different", xDelta: 1, yDelta: 1 },
+    { comparison: "same", xDelta: 1, yDelta: 0 },
+    { comparison: "same", xDelta: 0, yDelta: 1 },
+  ],
+];
+/*
+OX. .XO ... ...
+XX. .XX XX. .XX
+... ... OX. .XO
+*/
+
+const directions = [
+  { xDelta: 0, yDelta: -1 },
+  { xDelta: 1, yDelta: 0 },
+  { xDelta: 0, yDelta: 1 },
+  { xDelta: -1, yDelta: 0 },
+];
+
+const initializeGarden = (input: string) => {
   const garden: Garden = new Map();
+  input.split("\r\n").forEach((string, y) => {
+    string.split("").forEach((plant, x) => {
+      const key = `${x}|${y}`;
+      garden.set(key, plant);
+    });
+  });
+  return garden;
+};
+
+export const partOne = (
+  input = "",
+  regionCostMap: (region: Region) => number = ({ area, perimeter }) =>
+    area * perimeter
+) => {
   const regions: Region[] = [];
   const visitedCells: Set<string> = new Set();
 
   const getRegion = (x: number, y: number) => {
     let area = 0;
     let perimeter = 0;
+    let sides = 0;
     const queue = [{ x, y }];
     const nextQueue: { x: number; y: number }[] = [];
     while (queue.length > 0) {
@@ -38,8 +112,25 @@ export const partOne = (input = "") => {
             nextQueue.push({ x: newX, y: newY });
         }
       }
+      for (const patterns of corners) {
+        let matchesCornerPattern = true;
+        for (const { comparison, xDelta, yDelta } of patterns) {
+          const newX = currentX + xDelta;
+          const newY = currentY + yDelta;
+          const newKey = `${newX}|${newY}`;
+          const newPlant = garden.get(newKey);
+          if (comparison === "different" && currentPlant === newPlant)
+            matchesCornerPattern = false;
+          if (comparison === "same" && currentPlant !== newPlant)
+            matchesCornerPattern = false;
+          if (!matchesCornerPattern) break;
+        }
+        if (matchesCornerPattern) {
+          sides++;
+        }
+      }
     }
-    regions.push({ area, perimeter });
+    regions.push({ area, perimeter, sides });
     while (nextQueue.length > 0) {
       const { x: currentX, y: currentY } = nextQueue.shift() || {
         x: -1,
@@ -51,18 +142,10 @@ export const partOne = (input = "") => {
     }
   };
 
-  const initializeGarden = (input: string) =>
-    input.split("\r\n").forEach((string, y) => {
-      string.split("").forEach((plant, x) => {
-        const key = `${x}|${y}`;
-        garden.set(key, plant);
-      });
-    });
-
-  initializeGarden(input);
+  const garden = initializeGarden(input);
   getRegion(0, 0);
 
-  const regionCosts = regions.map(({ area, perimeter }) => area * perimeter);
+  const regionCosts = regions.map(regionCostMap);
   const totalCosts = regionCosts.reduce(
     (total, regionCost) => total + regionCost,
     0
@@ -71,5 +154,5 @@ export const partOne = (input = "") => {
 };
 
 export const partTwo = (input = "") => {
-  return 0;
+  return partOne(input, ({ area, sides }) => area * sides);
 };
