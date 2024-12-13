@@ -22,11 +22,11 @@ describe("Part One", () => {
   });
 });
 
-// describe("Part Two", () => {
-//   it("Example", () => {
-//     expect(partTwo(example1)).toBe(0);
-//   });
-//   it("User Puzzle Input", () => {
-//     expect(partTwo(input)).toBe(0);
-//   });
-// });
+describe("Part Two", () => {
+  it("Example", () => {
+    expect(partTwo(example1)).toBe(875318608908);
+  });
+  it("User Puzzle Input", () => {
+    expect(partTwo(input)).toBe(87582154060429);
+  });
+});

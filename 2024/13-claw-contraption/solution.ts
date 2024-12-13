@@ -1,46 +1,19 @@
-type Button = { cost: number; x: number; y: number };
+type Button = { cost: number; presses: number; x: number; y: number };
 type Machine = {
   button: { a: Button; b: Button };
   prize: Prize;
-  winningCombinations: WinningCombination;
 };
 type Prize = { x: number; y: number };
-type WinningCombination = Map<string, WinningCombinationValue>;
-type WinningCombinationValue = {
-  count: { a: number; b: number };
-  cost: number;
-};
 
-const filterMachines = ({ winningCombinations }: Machine): boolean =>
-  winningCombinations.size > 0;
-const getWinningCombinations = (
-  a: Button,
-  b: Button,
-  key: "x" | "y",
-  prize: Prize
-) =>
-  [...Array(Math.ceil(prize[key] / a[key]))]
-    .map((_, i) => {
-      const aPresses = i;
-      const aDistance = a[key] * i;
-      const distanceRemaining = prize[key] - aDistance;
-      const bPresses = distanceRemaining / b[key];
-      return { aPresses, bPresses };
-    })
-    .reduce((map: WinningCombination, { aPresses, bPresses }) => {
-      if (bPresses % 1 === 0)
-        map.set(`${aPresses}|${bPresses}`, {
-          count: { a: aPresses, b: bPresses },
-          cost: aPresses * a.cost + bPresses * b.cost,
-        });
-      return map;
-    }, new Map<string, { count: { a: number; b: number }; cost: number }>());
+const filterMachines = ({ button: { a, b } }: Machine): boolean =>
+  a.presses % 1 === 0 && b.presses % 1 === 0;
 const initButton = (cost: number, x: number, y: number): Button => ({
   cost,
+  presses: 0,
   x,
   y,
 });
-const initMachines = (input = "") =>
+const initMachines = (input = "", distanceIncrease = 0) =>
   input.split("\r\n\r\n").map((string) => {
     const [_, buttonAX, buttonAY, buttonBX, buttonBY, prizeX, prizeY] = (
       string.match(
@@ -50,42 +23,39 @@ const initMachines = (input = "") =>
 
     const a = initButton(3, buttonAX, buttonAY);
     const b = initButton(1, buttonBX, buttonBY);
-    const prize = initPrize(prizeX, prizeY);
-    const winningXCombinations = getWinningCombinations(a, b, "x", prize);
-    const winningYCombinations = getWinningCombinations(a, b, "y", prize);
-    const winningCombinations: WinningCombination = new Map();
-    for (const [key, value] of winningXCombinations) {
-      if (winningYCombinations.has(key)) winningCombinations.set(key, value);
-    }
+    const prize = initPrize(distanceIncrease, prizeX, prizeY);
+    const aPresses = Math.abs(
+      (prize.x * b.y - prize.y * b.x) / (a.x * b.y - a.y * b.x)
+    );
+    const bPresses = Math.abs(
+      (prize.x * a.y - prize.y * a.x) / (a.x * b.y - a.y * b.x)
+    );
+    a.presses = aPresses;
+    b.presses = bPresses;
 
     return {
       button: {
-        a: initButton(3, buttonAX, buttonAY),
-        b: initButton(3, buttonBX, buttonBY),
+        a,
+        b,
       },
-      prize: initPrize(prizeX, prizeY),
-      winningCombinations,
+      prize,
     };
   });
-const initPrize = (x: number, y: number): Prize => ({ x, y });
+const initPrize = (distanceIncrease: number, x: number, y: number): Prize => ({
+  x: x + distanceIncrease,
+  y: y + distanceIncrease,
+});
 
-export const partOne = (input = "") => {
-  const machines: Machine[] = initMachines(input);
+export const partOne = (input = "", distanceIncrease = 0) => {
+  const machines: Machine[] = initMachines(input, distanceIncrease);
   const winnableMachines = machines.filter(filterMachines);
-  const minimumMachineCosts = winnableMachines.map(
-    ({ winningCombinations }) =>
-      [...winningCombinations.values()].sort(
-        (a: WinningCombinationValue, b: WinningCombinationValue) =>
-          a.cost - b.cost
-      )[0].cost
+  const machineCosts = winnableMachines.map(
+    ({ button: { a, b } }) => a.presses * a.cost + b.presses * b.cost
   );
-  const totalCost = minimumMachineCosts.reduce(
-    (total, cost) => total + cost,
-    0
-  );
+  const totalCost = machineCosts.reduce((total, cost) => total + cost, 0);
   return totalCost;
 };
 
 export const partTwo = (input = "") => {
-  return 0;
+  return partOne(input, 10000000000000);
 };
