@@ -1,16 +1,6 @@
 type Garden = Map<string, string>;
 type Region = { area: number; perimeter: number; sides: number };
 
-const cornerDescriptions = [
-  ".O.\nOX.\n...",
-  ".0.\n.XO\n...",
-  "...\nOX.\n.0.",
-  "...\n.XO\n.0.",
-  "OX.\nXX.\n...",
-  ".XO\n.XX\n...",
-  "...\nXX.\nOX.",
-  "...\n.XX\n.XO",
-];
 const corners: {
   comparison: "different" | "same";
   xDelta: number;
