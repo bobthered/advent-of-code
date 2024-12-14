@@ -15,7 +15,7 @@
 | 11  | [Plutonian Pebbles](./11-plutonian-pebbles/README.md)        | [Solution](./11-plutonian-pebbles/solution.js)    |
 | 12  | [Garden Groups](./12-garden-groups/README.md)                | [Solution](./12-garden-groups/solution.js)        |
 | 13  | [Claw Contraption](./13-claw-contraption/README.md)          | [Solution](./13-claw-contraption/solution.js)     |
-| 14  |                                                              |                                                   |
+| 14  | [Restroom Redoubt](./14-restroom-redoubt/README.md)          | [Solution](./14-restroom-redoubt/solution.js)     |
 | 15  |                                                              |                                                   |
 | 16  |                                                              |                                                   |
 | 17  |                                                              |                                                   |
