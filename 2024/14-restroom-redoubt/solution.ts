@@ -13,6 +13,27 @@ type Robot = {
   vy: number;
 };
 
+const determineIfIsTree = (
+  robots: Omit<Robot, "fx" | "fy" | "quadrant">[],
+  options: Options
+) => {
+  const map = getMap(robots, options);
+  return /X{21}/.test(map);
+};
+
+const getMap = (
+  robots: Omit<Robot, "fx" | "fy" | "quadrant">[],
+  options: Options
+) => {
+  const map = [...Array(options.height)].map((_) =>
+    [...Array(options.width)].fill(0)
+  );
+  robots.forEach((robot) => map[robot.py][robot.px]++);
+  return map
+    .map((row) => row.map((cell) => (cell === 0 ? " " : "X")).join(""))
+    .join("\n");
+};
+
 const getQuandrant = (fx: number, fy: number, options: Options) => {
   let quadrantX: string = "";
   let quadrantY: string = "";
@@ -77,6 +98,7 @@ export const partOne = (input = "", userOptions: Partial<Options> = {}) => {
       ["1|1", 0],
     ])
   );
+  // showFinalMap(robots, options);
   const safetyFactor = [...quadrants].reduce(
     (total, [_, amount]) => total * amount,
     1
@@ -84,6 +106,39 @@ export const partOne = (input = "", userOptions: Partial<Options> = {}) => {
   return safetyFactor;
 };
 
-export const partTwo = (input = "") => {
-  return 0;
+export const partTwo = (input = "", userOptions: Partial<Options> = {}) => {
+  const defaultOptions: Options = {
+    height: 103,
+    seconds: 100,
+    width: 101,
+  };
+  const options: Options = Object.assign(defaultOptions, userOptions);
+  let robots: Omit<Robot, "fx" | "fy" | "quadrant">[] = input
+    .split("\r\n")
+    .map((string) => {
+      const [_, px, py, vx, vy] = (
+        string.match(/p=(\d+),(\d+)\sv=(-?\d+),(-?\d+)/) || []
+      ).map(Number);
+
+      return {
+        px,
+        py,
+        vx,
+        vy,
+      };
+    });
+  let second = 0;
+  while (!determineIfIsTree(robots, options)) {
+    robots = robots.map(({ px, py, vx, vy }) => {
+      px = (px + vx) % options.width;
+      py = (py + vy) % options.height;
+
+      if (px < 0) px += options.width;
+      if (py < 0) py += options.height;
+
+      return { px, py, vx, vy };
+    });
+    second++;
+  }
+  return second;
 };
