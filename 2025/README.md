@@ -3,3 +3,4 @@
 | Day | Problem                                          | Solution                                    |
 | --- | ------------------------------------------------ | ------------------------------------------- |
 | 1   | [Secret Entrance](./1-secret-entrance/README.md) | [Solution](./1-secret-entrance/solution.js) |
+| 2 | [Gift Shop](./2-gift-shop/README.md) | [Solution](./2-gift-shop/solution.js)|
