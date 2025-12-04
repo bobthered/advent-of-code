@@ -44,7 +44,7 @@ if (!fs.existsSync(`./${year}/${path}`)) {
       path: `./${year}/${path}/index.test.js`,
       content: `import { describe, it, expect } from 'vitest';
 import { example1, example2, input } from './input.js';
-import { partOne, partTwo } from './solution';
+import { partOne, partTwo } from './solution.js';
 
 describe('Part One', () => {
   it('Example', () => {
@@ -74,6 +74,13 @@ describe('Part One', () => {
     {
       path: `./${year}/${path}/solution.js`,
       content: `export const partOne = (input = '') => {
+  // parse input
+  const lines = input.split('\\n');
+  
+  return 1;
+}
+
+export const partTwo = (input = '') => {
   // parse input
   const lines = input.split('\\n');
   
