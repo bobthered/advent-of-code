@@ -5,9 +5,7 @@ const calcualteMaximumJoltage = (input, batteryCount = 2) => {
 
   banks.forEach((bank) => {
     let leftPointer = 0;
-    let rightPointer = bank.length - batteryCount + leftPointer;
-
-    let joltageArray = [];
+    const joltageArray = [];
 
     for (
       let rightPointer = bank.length - batteryCount;
