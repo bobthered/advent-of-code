@@ -8,3 +8,4 @@
 | 4 | [Printing Department](./4-printing-department/README.md) | [Solution](./4-printing-department/solution.js)|
 | 5 | [Cafeteria](./5-cafeteria/README.md) | [Solution](./5-cafeteria/solution.js)|
 | 6 | [Trash Compactor](./6-trash-compactor/README.md) | [Solution](./6-trash-compactor/solution.js)|
+| 7 | [Laboratories](./7-laboratories/README.md) | [Solution](./7-laboratories/solution.js)|
