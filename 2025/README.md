@@ -1,12 +1,13 @@
 # Advent of Code - 2025
 
-| Day | Problem                                          | Solution                                    |
-| --- | ------------------------------------------------ | ------------------------------------------- |
-| 1   | [Secret Entrance](./1-secret-entrance/README.md) | [Solution](./1-secret-entrance/solution.js) |
-| 2 | [Gift Shop](./2-gift-shop/README.md) | [Solution](./2-gift-shop/solution.js)|
-| 3 | [Lobby](./3-lobby/README.md) | [Solution](./3-lobby/solution.js)|
-| 4 | [Printing Department](./4-printing-department/README.md) | [Solution](./4-printing-department/solution.js)|
-| 5 | [Cafeteria](./5-cafeteria/README.md) | [Solution](./5-cafeteria/solution.js)|
-| 6 | [Trash Compactor](./6-trash-compactor/README.md) | [Solution](./6-trash-compactor/solution.js)|
-| 7 | [Laboratories](./7-laboratories/README.md) | [Solution](./7-laboratories/solution.js)|
-| 8 | [Playground](./8-playground/README.md) | [Solution](./8-playground/solution.js)|
+| Day | Problem                                                  | Solution                                        |
+| --- | -------------------------------------------------------- | ----------------------------------------------- |
+| 1   | [Secret Entrance](./1-secret-entrance/README.md)         | [Solution](./1-secret-entrance/solution.js)     |
+| 2   | [Gift Shop](./2-gift-shop/README.md)                     | [Solution](./2-gift-shop/solution.js)           |
+| 3   | [Lobby](./3-lobby/README.md)                             | [Solution](./3-lobby/solution.js)               |
+| 4   | [Printing Department](./4-printing-department/README.md) | [Solution](./4-printing-department/solution.js) |
+| 5   | [Cafeteria](./5-cafeteria/README.md)                     | [Solution](./5-cafeteria/solution.js)           |
+| 6   | [Trash Compactor](./6-trash-compactor/README.md)         | [Solution](./6-trash-compactor/solution.js)     |
+| 7   | [Laboratories](./7-laboratories/README.md)               | [Solution](./7-laboratories/solution.js)        |
+| 8   | [Playground](./8-playground/README.md)                   | [Solution](./8-playground/solution.js)          |
+| 9 | [Movie Theater](./9-movie-theater/README.md) | [Part One](./9-movie-theater/solution/partOne.ts) & [Part Two](./9-movie-theater/solution/partTwo.ts) |
