@@ -9,3 +9,4 @@
 | 5 | [Cafeteria](./5-cafeteria/README.md) | [Solution](./5-cafeteria/solution.js)|
 | 6 | [Trash Compactor](./6-trash-compactor/README.md) | [Solution](./6-trash-compactor/solution.js)|
 | 7 | [Laboratories](./7-laboratories/README.md) | [Solution](./7-laboratories/solution.js)|
+| 8 | [Playground](./8-playground/README.md) | [Solution](./8-playground/solution.js)|
