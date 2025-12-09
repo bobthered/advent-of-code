@@ -37,14 +37,14 @@ readline.close();
 readline.on("close", () => process.exit(0));
 
 if (!fs.existsSync(`./${year}/${path}`)) {
-  fs.mkdirSync(`./${year}/${path}`, { recursive: true });
+  fs.mkdirSync(`./${year}/${path}/solution`, { recursive: true });
 
   const files = [
     {
       path: `./${year}/${path}/index.test.js`,
       content: `import { describe, it, expect } from 'vitest';
-import { example1, example2, input } from './input.js';
-import { partOne, partTwo } from './solution.js';
+import { example1, example2, input } from './input.ts';
+import { partOne, partTwo } from './solution/index.ts';
 
 describe('Part One', () => {
   it('Example', () => {
@@ -67,21 +67,26 @@ describe('Part One', () => {
 // })`,
     },
     {
-      path: `./${year}/${path}/input.js`,
+      path: `./${year}/${path}/input.ts`,
       content: `export const example1 = \`\`;\rexport const example2 = \`\`;\rexport const input = \`\`;`,
     },
     { path: `./${year}/${path}/README.md`, content: `# ${day} - ${title}` },
     {
-      path: `./${year}/${path}/solution.js`,
+      path: `./${year}/${path}/solution/index.ts`,
+      content: `export { partOne } from './partOne.ts';
+export { partTwo } from './partTwo.ts';`,
+    },
+    {
+      path: `./${year}/${path}/solution/partOne.ts`,
       content: `export const partOne = (input = '') => {
-  // parse input
   const lines = input.split('\\n');
   
   return 1;
-}
-
-export const partTwo = (input = '') => {
-  // parse input
+}`,
+    },
+    {
+      path: `./${year}/${path}/solution/partTwo.ts`,
+      content: `export const partTwo = (input = '') => {
   const lines = input.split('\\n');
   
   return 1;
@@ -101,7 +106,7 @@ export const partTwo = (input = '') => {
   const readmePreContents = readmeContents.splice(0, 4);
   readmeContents[
     +day - 1
-  ] = `| ${day} | [${title}](./${path}/README.md) | [Solution](./${path}/solution.js)|`;
+  ] = `| ${day} | [${title}](./${path}/README.md) | [Part One](./${path}/solution/partOne.ts) & [Part Two](./${path}/solution/partTwo.ts) |`;
   readmeContents = [...readmePreContents, ...readmeContents].join("\n");
 
   await new Promise((resolve) =>
